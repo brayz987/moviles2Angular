@@ -1,0 +1,92 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Formulario</h4>
+
+      <div
+        class="row justify-content-center align-items-center g-2 text-center mb-3"
+      >
+        <div class="col-md-1">
+          <label for="nombre" class="col-form-label">Nombre </label>
+        </div>
+        <div class="col-md-5">
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            name="nombre"
+            aria-describedby="nombre"
+            [(ngModel)]="nombre"
+          />
+        </div>
+
+        <div class="col-md-1">
+          <label for="edad" class="col-form-label">Edad </label>
+        </div>
+        <div class="col-md-5">
+          <input
+            type="number"
+            class="form-control"
+            id="edad"
+            name="edad"
+            aria-describedby="edad"
+            [(ngModel)]="edad"
+          />
+        </div>
+      </div>
+
+      <div
+        class="row justify-content-center align-items-center g-2 text-center mb-3"
+      >
+        <div class="col-md-1">
+          <label for="direccion" class="col-form-label">Direccion </label>
+        </div>
+        <div class="col-md-5">
+          <input
+            type="text"
+            class="form-control"
+            id="direccion"
+            name="direccion"
+            aria-describedby="direccion"
+            [(ngModel)]="direccion"
+          />
+        </div>
+
+        <div class="col-md-1">
+          <label for="edad" class="col-form-label">Curso </label>
+        </div>
+        <div class="col-md-5">
+          <select
+            class="form-select"
+            name="cursos"
+            id="cursos"
+            [(ngModel)]="cursoSelected"
+          >
+            <option selected value="0">Seleccionar...</option>
+            <option [value]="i" *ngFor="let item of getListCursos(); index as i">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div
+        class="row justify-content-end align-items-center g-2 text-center mb-3"
+      >
+        <div class="col-md-11 text-end" id="answer">
+            <p class="my-0" >{{getAnswer()}}</p>
+        </div>
+
+        <div class="col-md-1">
+          <button
+            type="Button"
+            class="btn btn-info text-white"
+            (click)="getInscribir()"
+          >
+            Inscribir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

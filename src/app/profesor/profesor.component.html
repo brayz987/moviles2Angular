@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Profesores</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Dirección</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of profesores; index as i" >
+            <th scope="row">{{i}}</th>
+            <td scope="row">{{item.nombre}}</td>
+            <td scope="row">{{item.apellidos}}</td>
+            <td scope="row">{{item.edad}}</td>
+            <td scope="row">{{item.direccion}}</td>
+            <td><button class="btn btn-primary" (click)="selectProfe(item,i)">Seleccionar</button></td>
+            <td><button class="btn btn-danger text-white" (click)="borrarProfe(i)">Borrar</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <form action="">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="nombre"  name="nombre" class="form-control" [(ngModel)]="profesor.nombre" />
+          </div>
+          <div class="form-group">
+            <label for="name">Apellidos</label>
+            <input type="text" id="apellidos"  name="apellidos" class="form-control" [(ngModel)]="profesor.apellidos" />
+          </div>
+          <div class="form-group">
+            <label for="name">Edad</label>
+            <input type="number" id="edad" name="edad" class="form-control" [(ngModel)]="profesor.edad" />
+          </div>
+          <div class="form-group">
+            <label for="name">Dirección</label>
+            <input type="text" id="direccion"  name="direccion" class="form-control" [(ngModel)]="profesor.direccion" />
+          </div>
+          <br />
+
+          <div
+            class="row justify-content-end align-items-center g-3 text-center mb-3"
+          >
+            <div class="col-2 g-2">
+              <button class="btn btn-success text-white" (click)="registrarProfesor()" >Registrar</button>
+              <button class="btn btn-warning text-white" (click)="modificarProfe()">Modificar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div #modals></div>

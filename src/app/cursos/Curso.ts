@@ -1,4 +1,8 @@
+
+    // ESTA CLASE YA NO SE USA
+
 export class Curso {
+
     private curso: string[];
     private repuesta: string;
 
@@ -6,6 +10,7 @@ export class Curso {
         this.curso = ['Java1','Java2','Oracle','PHP1','PHP2','Javascript','TypeScript'];
         this.repuesta = "";
     }
+
 
     public getCurso():string[] {
         return this.curso;

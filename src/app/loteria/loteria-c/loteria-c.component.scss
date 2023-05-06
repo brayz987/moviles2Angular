@@ -1,0 +1,20 @@
+.h1 {
+    background-color: #CC3333;
+    color: aliceblue;
+    padding: 2%;
+}
+
+@keyframes anim{
+    0% {background-color: #332E7A;}
+    20% {background-color: #514444;}
+    60% {background-color: #162A48;}
+    80% {background-color: #A8A7A7;}
+    100% {background-color: rgba(219, 113, 208, 0.192)}
+}
+
+.loteriaContainer{
+    animation-name: anim;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+}
+

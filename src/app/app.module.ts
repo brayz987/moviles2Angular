@@ -11,6 +11,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimpleModalComponent } from './simple-modal/simple-modal.component';
 import { NotasComponent } from './notas/notas.component';
 import { CursosComponent } from './cursos/cursos.component';
+import { CounterComponent } from './contador/counter/counter.component';
+import { AddComponent } from './contador/counter/add/add.component';
+import { MinComponent } from './contador/counter/min/min.component';
+import { BalotaComponent } from './loteria/balota/balota.component';
+import { LoteriaCComponent } from './loteria/loteria-c/loteria-c.component';
+import { PlayersComponent } from './loteria/players/players.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { CursosComponent } from './cursos/cursos.component';
     ProfesorComponent,
     SimpleModalComponent,
     NotasComponent,
-    CursosComponent
+    CursosComponent,
+    CounterComponent,
+    AddComponent,
+    MinComponent,
+    BalotaComponent,
+    LoteriaCComponent,
+    PlayersComponent
   ],
   imports: [
     BrowserModule,

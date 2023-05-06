@@ -1,0 +1,38 @@
+<div class="text-center">
+  <h1 class="h1">Lotería de Uniempresarial</h1>
+  <div class="loteriaContainer row d-flex justify-content-center">
+    <app-balota class="col-auto" [valor]="numbers[0]"></app-balota>
+    <app-balota class="col-auto" [valor]="numbers[1]"></app-balota>
+    <app-balota class="col-auto" [valor]="numbers[2]"></app-balota>
+    <app-balota class="col-auto" [valor]="numbers[3]"></app-balota>
+    <app-balota class="col-auto" [valor]="numbers[4]"></app-balota>
+  </div>
+  <div class="mt-2">
+    <div class="d-grid gap-2">
+      <button
+        type="button"
+        (click)="playLotery()"
+        class="btn btn-block btn-danger text-white"
+      >
+        Jugar
+      </button>
+    </div>
+  </div>
+  <div class="mt-2">
+    <h2 *ngIf="numberWin != ''">
+        El numero ganador es: {{ numberWin }}
+    </h2>
+  </div>
+  <app-players [winnerNumber]="numberWin" (winnerEvent)="setWinners($event)" ></app-players>
+
+  <div class="mt-2 row" *ngIf="winnersLenght(); else noWinners" >
+    <h2>Los siguientes jugadores han ganados:</h2>
+    <div *ngFor="let winner of winners" >
+        <h3> {{winner.name}} {{winner.lastName}} </h3>
+    </div>
+  </div>
+  
+  <ng-template #noWinners>
+    <h2>No hay Ganadores</h2>
+  </ng-template>
+</div>

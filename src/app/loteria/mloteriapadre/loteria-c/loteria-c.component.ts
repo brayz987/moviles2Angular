@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlayerIO } from '../PlayerIO';
+import { PlayerIO } from '../../PlayerIO';
 
 @Component({
   selector: 'app-loteria-c',
@@ -12,7 +12,7 @@ export class LoteriaCComponent {
   winners:PlayerIO[] = [];
 
   constructor(){
-    this.numbers = [0,0,0,0,0];
+    this.numbers = [0,0];
     this.numberWin = "";
   }
 

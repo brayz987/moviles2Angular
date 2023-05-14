@@ -4,7 +4,7 @@ import { ProfesorComponent } from './profesor/profesor.component';
 import { NotasComponent } from './notas/notas.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { CounterComponent } from './contador/counter/counter.component';
-import { LoteriaCComponent } from './loteria/loteria-c/loteria-c.component';
+import { LoteriaCComponent } from './loteria/mloteriapadre/loteria-c/loteria-c.component';
 
 const routes: Routes = [
   { path: 'profesores', component: ProfesorComponent },
@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'notas', component: NotasComponent },
   { path: 'contador', component: CounterComponent },
   { path: 'loteria', component: LoteriaCComponent },
+  { path: '', component: CursosComponent } // Ruta por defecto
 ];
 
 @NgModule({

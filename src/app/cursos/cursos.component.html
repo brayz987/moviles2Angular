@@ -1,40 +1,43 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Cursos</h4>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombres</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Duracion</th>
-            <th scope="col">Costo</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of cursos; index as i" >
-            <th scope="row">{{i}}</th>
-            <td scope="row">{{item.nombre}}</td>
-            <td scope="row">{{item.descripcion}}</td>
-            <td scope="row">{{item.duracion}}</td>
-            <td scope="row">{{item.costo}}</td>
-            <td><button class="btn btn-primary" (click)="selectCurso(item,i)">Seleccionar</button></td>
-            <td><button class="btn btn-danger text-white" (click)="deleteCurso(i)">Borrar</button></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Duracion</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cursos; index as i">
+              <th scope="row">{{i}}</th>
+              <td scope="row">{{item.nombre}}</td>
+              <td scope="row">{{item.descripcion}}</td>
+              <td scope="row">{{item.duracion}}</td>
+              <td scope="row">{{item.costo}}</td>
+              <td><button class="btn btn-primary" (click)="selectCurso(item,i)">Seleccionar</button></td>
+              <td><button class="btn btn-danger text-white" (click)="deleteCurso(i)">Borrar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="row">
         <form action="">
           <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" id="nombre"  name="nombre" class="form-control" [(ngModel)]="curso.nombre" />
+            <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="curso.nombre" />
           </div>
           <div class="form-group">
             <label for="name">Descripcion</label>
-            <input type="text" id="descripcion"  name="descripcion" class="form-control" [(ngModel)]="curso.descripcion" />
+            <input type="text" id="descripcion" name="descripcion" class="form-control"
+              [(ngModel)]="curso.descripcion" />
           </div>
           <div class="form-group">
             <label for="name">Duracion</label>
@@ -42,15 +45,13 @@
           </div>
           <div class="form-group">
             <label for="name">Costo</label>
-            <input type="text" id="costo"  name="costo" class="form-control" [(ngModel)]="curso.costo" />
+            <input type="text" id="costo" name="costo" class="form-control" [(ngModel)]="curso.costo" />
           </div>
           <br />
 
-          <div
-            class="row justify-content-end align-items-center g-3 text-center mb-3"
-          >
-            <div class="col-2 g-2">
-              <button class="btn btn-success text-white" (click)="regiterCurso()" >Registrar</button>
+          <div class="row justify-content-end align-items-center g-3 text-center mb-3">
+            <div class="col-sm-6 col-md-3  g-2">
+              <button class="btn btn-success text-white" (click)="regiterCurso()">Registrar</button>
               <button class="btn btn-warning text-white" (click)="modifyCurso()">Modificar</button>
             </div>
           </div>

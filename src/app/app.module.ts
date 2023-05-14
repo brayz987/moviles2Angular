@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -14,9 +14,8 @@ import { CursosComponent } from './cursos/cursos.component';
 import { CounterComponent } from './contador/counter/counter.component';
 import { AddComponent } from './contador/counter/add/add.component';
 import { MinComponent } from './contador/counter/min/min.component';
-import { BalotaComponent } from './loteria/balota/balota.component';
-import { LoteriaCComponent } from './loteria/loteria-c/loteria-c.component';
-import { PlayersComponent } from './loteria/players/players.component';
+import { MloteriapadreModule } from './loteria/mloteriapadre/mloteriapadre.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -29,16 +28,21 @@ import { PlayersComponent } from './loteria/players/players.component';
     CursosComponent,
     CounterComponent,
     AddComponent,
-    MinComponent,
-    BalotaComponent,
-    LoteriaCComponent,
-    PlayersComponent
+    MinComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MloteriapadreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

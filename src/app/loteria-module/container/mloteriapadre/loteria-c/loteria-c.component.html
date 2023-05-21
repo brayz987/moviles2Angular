@@ -1,6 +1,6 @@
 <div class="text-center">
   <h1 class="h1">Lotería de Uniempresarial</h1>
-  <div class="loteriaContainer row d-flex justify-content-center">
+  <div class="loteriaContainer d-flex justify-content-center">
     <app-balota class="col-auto" [valor]="numbers[0]"></app-balota>
     <app-balota class="col-auto" [valor]="numbers[1]"></app-balota>
 
@@ -23,7 +23,7 @@
   </div>
   <app-players [winnerNumber]="numberWin" (winnerEvent)="setWinners($event)" ></app-players>
 
-  <div class="mt-2 row" *ngIf="winnersLenght(); else noWinners" >
+  <div class="mt-2" *ngIf="winnersLenght(); else noWinners" >
     <h2>Los siguientes jugadores han ganados:</h2>
     <div *ngFor="let winner of winners" >
         <h3> {{winner.name}} {{winner.lastName}} </h3>

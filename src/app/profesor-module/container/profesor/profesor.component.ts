@@ -1,7 +1,7 @@
 import { Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ProfesorOInterface } from './ProfesorOInterface';
 import { ProfesorInterface } from './ProfesorInterface';
-import { SimpleModalComponent } from '../simple-modal/simple-modal.component';
+import { SimpleModalComponent } from 'src/app/Utils/simple-modal/simple-modal.component';
 
 @Component({
   selector: 'app-profesor',

@@ -1,7 +1,7 @@
 import { Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { SimpleModalComponent } from '../simple-modal/simple-modal.component';
 import { CursoIO } from './CursoIO';
 import { CursoI } from './CursoI';
+import { SimpleModalComponent } from 'src/app/Utils/simple-modal/simple-modal.component';
 
 @Component({
   selector: 'app-cursos',

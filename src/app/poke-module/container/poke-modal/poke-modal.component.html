@@ -1,0 +1,78 @@
+<ng-template #content let-modal class="modal-lg">
+    <div class="modal-header">
+      <h5 class="modal-title">{{pokeData.name.charAt(0).toUpperCase()+pokeData.name.slice(1)}}</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+        (click)="modal.close()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12 col-md-5  ">
+                <!-- Carrusel sprites pokemon -->
+
+            <div id="carouselPokeImage" class="carousel slide carousel-dark" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselPokeImage" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#carouselPokeImage" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselPokeImage" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#carouselPokeImage" data-bs-slide-to="3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{{ pokeData.sprites.front_default }}" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ pokeData.sprites.back_default }}" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ pokeData.sprites.front_shiny }}" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ pokeData.sprites.back_shiny }}" class="d-block w-100">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselPokeImage" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselPokeImage" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+              </button>
+            </div>
+
+      <!-- Fin del carrusel -->
+        </div>
+        <div class="col-12 col-md-7">
+
+      <div class="table-responsive">
+        <table class="table table-hover table-border table-primary align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Estadistica</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let stat of pokeData.stats" class="table-primary">
+              <td scope="row">{{stat.stat.name}}</td>
+              <td>{{stat.base_stat}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="modal.close()">
+        OK
+      </button>
+    </div>
+</ng-template>

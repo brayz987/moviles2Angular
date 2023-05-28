@@ -14,7 +14,6 @@ export class CursosComponent implements CursoIO {
   messageAlert:string = "";
 
   indexCurso!:number;
-  modal!: ComponentRef<SimpleModalComponent>;
   @ViewChild('modals',{read: ViewContainerRef}) modalContainer!: ViewContainerRef;
 
 
@@ -69,5 +68,5 @@ export class CursosComponent implements CursoIO {
     this.cursos[this.indexCurso] = JSON.parse(JSON.stringify(this.curso));
   }
 
-  
+
 }

@@ -25,6 +25,13 @@ const routes: Routes = [
             (module) => module.ContadorModuleModule
           ),
       },
+      {
+        path: 'pokemon',
+        loadChildren: () =>
+          import('../poke-module/poke-module.module').then(
+            (module) => module.PokeModuleModule
+          ),
+      },
     ],
   },
   {

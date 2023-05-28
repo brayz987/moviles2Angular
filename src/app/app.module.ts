@@ -8,6 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModuleModule } from './layout-module/layout-module.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     FormsModule,
-    LayoutModuleModule  // Este modulo es el que se encarga de manejar el enrutamiento principal
+    LayoutModuleModule,  // Este modulo es el que se encarga de manejar el enrutamiento principal
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

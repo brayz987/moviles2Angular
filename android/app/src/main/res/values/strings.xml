@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">curso</string>
+    <string name="title_activity_main">curso</string>
+    <string name="package_name">com.brayan.curso</string>
+    <string name="custom_url_scheme">com.brayan.curso</string>
+</resources>

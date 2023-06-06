@@ -1,0 +1,24 @@
+<div class="scanner-ui">
+  <div class="scan-box"></div>
+  <button type="button" name="" id="" class="btn btn-primary scan-button" (click)="stopScanner()">Cancelar</button>
+</div>
+
+<section class="card mt-5">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-10 col-6">
+        <h4 class="card-title">Scanner QR</h4>
+      </div>
+      <div class="col-md-2 col-6">
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-primary" (click)="scanner()" >Escanear</button>
+        </div>
+      </div>
+    </div>
+    <section class="row pt-3">
+      <div class="col-12">
+        <h4>Resultado: {{resultQR}}</h4>
+      </div>
+    </section>
+  </div>
+</section>

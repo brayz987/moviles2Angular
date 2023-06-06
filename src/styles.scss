@@ -1,16 +1,35 @@
-
 $white: #ffffff;
 
 $theme-colors: (
-    // "light":      #dcd9eb,
-    "light":      #d1d1d1,
-    "dark":       #091323,
-    "primary":    #0f3d86,
-    "secondary":  #d44db2,
-    "info":       #db3c54,
-    "success":    #06bb64,
-    "warning":    #ecbd00,
-    "danger":     #ef1907,
+  // "light":      #dcd9eb,
+  "light": #d1d1d1,
+  "dark": #091323,
+  "primary": #0f3d86,
+  "secondary": #d44db2,
+  "info": #db3c54,
+  "success": #06bb64,
+  "warning": #ecbd00,
+  "danger": #ef1907
 );
 
-@import '../node_modules/bootstrap/scss/bootstrap'
+// Estos estilos pertenecen al padre ya que modifican el body
+.scanner-ui {
+  display: none !important;
+  visibility: hidden !important;
+}
+.scanner-hide {
+  visibility: visible !important;
+}
+
+body.qrscanner {
+  background-color: transparent !important;
+}
+body.qrscanner .scanner-ui {
+  display: block !important;
+  visibility: visible !important;
+}
+body.qrscanner .scanner-hide {
+  visibility: hidden !important;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";

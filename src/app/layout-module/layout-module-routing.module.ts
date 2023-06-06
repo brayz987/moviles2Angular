@@ -32,6 +32,13 @@ const routes: Routes = [
             (module) => module.PokeModuleModule
           ),
       },
+      {
+        path: 'capacitorTest',
+        loadChildren: () =>
+          import('../capacitor-module/capacitor-module.module').then(
+            module => module.CapacitorModuleModule
+          )
+      }
     ],
   },
   {

@@ -1,0 +1,22 @@
+<section class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-10 col-4">
+        <h4 class="card-title">Camara</h4>
+      </div>
+      <div class="col-md-2 col-8">
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-primary" (click)="takePhoto()">
+            Tomar Foto
+          </button>
+        </div>
+      </div>
+    </div>
+    <section class="row pt-3">
+      <div class="col-12">
+        <h4>Resultado:</h4>
+        <img src="{{ urlResult }}" class="img-fluid rounded-top" alt="" />
+      </div>
+    </section>
+  </div>
+</section>

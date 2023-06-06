@@ -1,0 +1,22 @@
+<section class="card mt-5">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-10 col-6">
+        <h4 class="card-title">Geolocalizacion</h4>
+      </div>
+      <div class="col-md-2 col-6">
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-primary" (click)="getGeo()">Obtener Ubicacion</button>
+        </div>
+      </div>
+    </div>
+    <section class="row pt-3">
+      <div class="col-12">
+        <h4>Resultado:</h4>
+        <p>Altitud: {{ cordinates.latitude }}</p>
+        <p>Longitud: {{ cordinates.longitude }}</p>
+        <p>Exactitud: {{ cordinates.accuracy }}</p>
+      </div>
+    </section>
+  </div>
+</section>

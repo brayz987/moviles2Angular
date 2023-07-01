@@ -2,19 +2,16 @@ import { Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/c
 import { ProfesorOInterface } from './ProfesorOInterface';
 import { ProfesorInterface } from './ProfesorInterface';
 import { SimpleModalComponent } from 'src/app/Utils/simple-modal/simple-modal.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProfesorFormInterface } from './ProfesorFormInterface';
 
 @Component({
   selector: 'app-profesor',
   templateUrl: './profesor.component.html',
   styleUrls: ['./profesor.component.scss'],
 })
-export class ProfesorComponent implements ProfesorOInterface {
-  profesor!: {
-    nombre: string;
-    apellidos: string;
-    edad: number;
-    direccion: string;
-  };
+export class ProfesorComponent {
+  form!:FormGroup;
   profesores!: Array<any | object>;
   indexProfe:number = 0;
   messageAlert : string = "";
@@ -22,13 +19,7 @@ export class ProfesorComponent implements ProfesorOInterface {
 
   @ViewChild('modals',{read: ViewContainerRef}) modalContainer!: ViewContainerRef;
 
-  constructor() {
-    this.profesor = {
-      nombre: '',
-      apellidos: '',
-      edad: 0,
-      direccion: '',
-    };
+  constructor(private formBuilder:FormBuilder) {
 
     this.profesores = [
       {
@@ -50,6 +41,20 @@ export class ProfesorComponent implements ProfesorOInterface {
         direccion: 'el dorado',
       },
     ];
+
+    this.buildForm()
+  }
+
+  private buildForm = () => {
+
+    const nameRgx:RegExp = /^(([a-zA-ZÀ-ÖØ-öø-ÿ]{3,60})([\s]?)([a-zA-ZÀ-ÖØ-öø-ÿ]*))$/;
+
+    this.form = this.formBuilder.group<ProfesorFormInterface>({
+      nombre: this.formBuilder.nonNullable.control("",[Validators.required, Validators.pattern(nameRgx)]),
+      apellidos: this.formBuilder.nonNullable.control("",[Validators.required, Validators.pattern(nameRgx)]),
+      edad: this.formBuilder.control(null,[Validators.required, Validators.min(18), Validators.max(70)]),
+      direccion: this.formBuilder.nonNullable.control("",[Validators.required, Validators.maxLength(150), Validators.minLength(10)]),
+    })
   }
 
   cantProfes() {
@@ -58,7 +63,7 @@ export class ProfesorComponent implements ProfesorOInterface {
 
   selectProfe(profe: ProfesorInterface, index:number) {
     // Se hace un deep copy para evitar que se actualice al tiempo el array
-    this.profesor = JSON.parse(JSON.stringify(profe));
+    this.form?.setValue(profe)
     this.indexProfe = index;
   }
 
@@ -68,15 +73,16 @@ export class ProfesorComponent implements ProfesorOInterface {
 
   registrarProfesor() {
     let valido = true;
+    let profesor:ProfesorInterface = this.form?.value
     this.profesores.forEach((objProfesor: ProfesorInterface) => {
       // Se valida si ya existe el profesor
-      if(objProfesor.nombre == this.profesor.nombre) valido = false;
+      if(objProfesor.nombre == profesor.nombre) valido = false;
     });
 
-    if (valido) this.profesores.push(this.profesor);
+    if (valido) this.profesores.push(profesor);
     else {
       // Si existe se crea una modal con el mensaje
-      this.messageAlert = `El profesor ${this.profesor.nombre} ya existe`;
+      this.messageAlert = `El profesor ${profesor.nombre} ya existe`;
       this.modalContainer.clear();
       let modal = this.modalContainer.createComponent(SimpleModalComponent);
       modal.setInput("message", this.messageAlert);
@@ -85,6 +91,6 @@ export class ProfesorComponent implements ProfesorOInterface {
   }
 
   modificarProfe(){
-    this.profesores[this.indexProfe] = JSON.parse(JSON.stringify(this.profesor));
+    this.profesores[this.indexProfe] = JSON.parse(JSON.stringify(this.form?.value));
   }
 }

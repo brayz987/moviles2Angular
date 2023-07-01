@@ -29,30 +29,51 @@
       </div>
 
       <div class="row">
-        <form action="">
+        <form [formGroup]="form" novalidate >
           <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="curso.nombre" />
+            <input type="text" name="nombre" class="form-control" formControlName="nombre"
+            [ngClass]="{'is-invalid': form.get('nombre')?.errors && form.get('nombre')?.touched, 'is-valid': form.get('nombre')?.valid}"/>
+            <div *ngIf="form.get('nombre')?.errors && form.get('nombre')?.touched" class="invalid-feedback">
+              <p *ngIf="form.get('nombre')?.hasError('required')">Campo Requerido</p>
+              <p *ngIf="form.get('nombre')?.hasError('pattern')">Formato Invalido</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="name">Descripcion</label>
-            <input type="text" id="descripcion" name="descripcion" class="form-control"
-              [(ngModel)]="curso.descripcion" />
+            <label for="descripcion">Descripcion</label>
+            <input type="text" name="descripcion" class="form-control" formControlName="descripcion"
+            [ngClass]="{'is-invalid': form.get('descripcion')?.errors && form.get('descripcion')?.touched, 'is-valid': form.get('descripcion')?.valid}"/>
+            <div *ngIf="form.get('descripcion')?.errors && form.get('descripcion')?.touched" class="invalid-feedback">
+              <p *ngIf="form.get('descripcion')?.hasError('required')">Campo Requerido</p>
+              <p *ngIf="form.get('descripcion')?.hasError('minlength')">Minimo 5 caracteres</p>
+              <p *ngIf="form.get('descripcion')?.hasError('maxlength')">Maximo 50 caracteres</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="name">Duracion</label>
-            <input type="number" id="duracion" name="duracion" class="form-control" [(ngModel)]="curso.duracion" />
+            <label for="duracion">Duracion</label>
+            <input type="number" name="duracion" class="form-control" formControlName="duracion"
+            [ngClass]="{'is-invalid': form.get('duracion')?.errors && form.get('duracion')?.touched, 'is-valid': form.get('duracion')?.valid}"/>
+            <div *ngIf="form.get('duracion')?.errors && form.get('duracion')?.touched" class="invalid-feedback">
+              <p *ngIf="form.get('duracion')?.hasError('required')">Campo Requerido</p>
+              <p *ngIf="form.get('duracion')?.hasError('min')">Minimo valor 1</p>
+              <p *ngIf="form.get('duracion')?.hasError('max')">Maximo valor 500</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="name">Costo</label>
-            <input type="text" id="costo" name="costo" class="form-control" [(ngModel)]="curso.costo" />
+            <label for="costo">Costo</label>
+            <input type="number" name="costo" class="form-control" formControlName="costo"
+            [ngClass]="{'is-invalid': form.get('costo')?.errors && form.get('costo')?.touched, 'is-valid': form.get('costo')?.valid}"/>
+            <div *ngIf="form.get('costo')?.errors && form.get('costo')?.touched" class="invalid-feedback">
+              <p *ngIf="form.get('costo')?.hasError('required')">Campo Requerido</p>
+              <p *ngIf="form.get('costo')?.hasError('min')">Minimo valor 1</p>
+              <p *ngIf="form.get('costo')?.hasError('max')">Maximo valor 500</p>
+            </div>
           </div>
           <br />
-
           <div class="row justify-content-end align-items-center g-3 text-center mb-3">
             <div class="col-sm-6 col-md-3  g-2">
-              <button class="btn btn-success text-white" (click)="regiterCurso()">Registrar</button>
-              <button class="btn btn-warning text-white" (click)="modifyCurso()">Modificar</button>
+              <button class="btn btn-success text-white" (click)="regiterCurso()" [disabled]="form.invalid" >Registrar</button>
+              <button class="btn btn-warning text-white" (click)="modifyCurso()" [disabled]="form.invalid">Modificar</button>
             </div>
           </div>
         </form>

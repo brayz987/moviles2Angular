@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModuleModule } from './layout-module/layout-module.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
